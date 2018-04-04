@@ -23,6 +23,7 @@ client = ImageBoss::Client.new('https://mywebsite.com')
 
 image_url = client.path('/images/img01.jpg')
                   .operation(:cover, width: 100, height: 100)
+
 #=> https://service.imageboss.me/cover/100x100/https://mywebsite.com/images/img01.jpg
 ```
 
@@ -32,6 +33,7 @@ client = ImageBoss::Client.new('https://mywebsite.com')
 
 image_url = client.path('/images/img01.jpg')
                   .operation(:height, height: 100)
+
 #=> https://service.imageboss.me/height/100/https://mywebsite.com/images/img01.jpg
 ```
 
@@ -41,6 +43,7 @@ client = ImageBoss::Client.new('https://mywebsite.com')
 
 image_url = client.path('/images/img01.jpg')
                   .operation(:width, width: 100, options: { grayscale: true })
+
 #=> https://service.imageboss.me/width/100/grayscale:trye/https://mywebsite.com/images/img01.jpg
 ```
 ### All operations and options for Image Resizing
