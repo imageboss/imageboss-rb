@@ -1,4 +1,5 @@
-# ImageBoss Helper for Ruby [![Build Status](https://travis-ci.org/imageboss/imageboss-rb.svg?branch=master)](https://travis-ci.org/imageboss/imageboss-rb) [![Gem Version](https://badge.fury.io/rb/imageboss-rb.svg)](https://badge.fury.io/rb/imageboss-rb)
+# ImageBoss Helper for Ruby
+[![Build Status](https://travis-ci.org/imageboss/imageboss-rb.svg?branch=master)](https://travis-ci.org/imageboss/imageboss-rb) [![Gem Version](https://badge.fury.io/rb/imageboss-rb.svg)](https://badge.fury.io/rb/imageboss-rb)
 
 Official Gem for generating ImageBoss URLs.
 [https://imageboss.me/](https://imageboss.me/)
