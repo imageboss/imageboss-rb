@@ -19,7 +19,7 @@ gem install imageboss-rb
 ## Usage
 ### Example `Image Resizing With Cover Operation`
 ```ruby
-client = ImageBoss::Client.new('https://mywebsite.com')
+client = ImageBoss::Client.new(domain: 'https://mywebsite.com')
 
 image_url = client.path('/images/img01.jpg')
                   .operation(:cover, width: 100, height: 100)
@@ -29,7 +29,7 @@ image_url = client.path('/images/img01.jpg')
 
 ### Example `Image Resizing With Height Operation`
 ```ruby
-client = ImageBoss::Client.new('https://mywebsite.com')
+client = ImageBoss::Client.new(domain: 'https://mywebsite.com')
 
 image_url = client.path('/images/img01.jpg')
                   .operation(:height, height: 100)
@@ -39,7 +39,7 @@ image_url = client.path('/images/img01.jpg')
 
 ### Example `Image Resizing With Extra Options`
 ```ruby
-client = ImageBoss::Client.new('https://mywebsite.com')
+client = ImageBoss::Client.new(domain: 'https://mywebsite.com')
 
 image_url = client.path('/images/img01.jpg')
                   .operation(:width, width: 100, options: { grayscale: true })
