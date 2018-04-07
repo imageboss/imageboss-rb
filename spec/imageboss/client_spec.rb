@@ -11,7 +11,11 @@ describe ImageBoss::Client do
   subject { described_class.new(**client_args) }
 
   context 'initialize' do
-    it { expect(subject.instance_variable_get(:@domain)).to eq client_args[:domain] }
+    it { expect(subject.instance_variable_get(:@options)).to eq({
+        domain: client_args[:domain],
+        enabled: true
+      })
+    }
   end
 
   context 'path' do
@@ -55,6 +59,16 @@ describe ImageBoss::Client do
     context 'cdn' do
       let(:operation_args) { [:cdn] }
       it { expect(image_url).to eq "#{service}/cdn/https://myassets.com/assets/img01.jpg" }
+    end
+
+    fcontext 'disabled  client' do
+      let(:client_args) {{
+        domain: 'https://myassets.com',
+        enabled: false
+      }}
+
+      let(:operation_args) { [:height, height: 200 ] }
+      it { expect(image_url).to eq '/assets/img01.jpg' }
     end
   end
 end

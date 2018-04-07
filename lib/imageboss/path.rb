@@ -12,12 +12,15 @@ module ImageBoss
       cdn: { recipe: '/:operation/:options/', required: [] }
     }.freeze
 
-    def initialize(domain, asset_path)
-      @domain = domain.chomp('/')
+    def initialize(client_options, asset_path)
+      @client_options = client_options
+      @domain = client_options[:domain].chomp('/')
       @asset_path = asset_path
     end
 
     def operation(name, options = {})
+      return @asset_path unless @client_options[:enabled]
+
       @operation_name = name.to_sym
       @options = options
       @extra_options = parse_options(options[:options])

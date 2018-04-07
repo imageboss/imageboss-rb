@@ -44,10 +44,24 @@ client = ImageBoss::Client.new(domain: 'https://mywebsite.com')
 image_url = client.path('/images/img01.jpg')
                   .operation(:width, width: 100, options: { grayscale: true })
 
-#=> https://service.imageboss.me/width/100/grayscale:trye/https://mywebsite.com/images/img01.jpg
+#=> https://service.imageboss.me/width/100/grayscale:true/https://mywebsite.com/images/img01.jpg
 ```
 ### All operations and options for Image Resizing
 It's all available on our [Official Docs](https://imageboss.me/docs).
+
+### Disabling URL generation
+If you are coding on `test`, `development` environments and don't want to send any image to ImageBoss
+you can always disable the URL generation and the client will just fallback to the original path provided.
+
+```ruby
+client = ImageBoss::Client.new(domain: 'https://mywebsite.com', disabled: true)
+
+image_url = client.path('/images/img01.jpg')
+                  .operation(:width, width: 100, options: { grayscale: true })
+
+#=> /images/img01.jpg
+```
+This will give you the ability to see your image without adding extra code to handle this situation.
 
 ## Tested on
 Ruby
