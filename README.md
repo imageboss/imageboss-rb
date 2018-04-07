@@ -4,6 +4,17 @@
 Official Gem for generating ImageBoss URLs.
 [https://imageboss.me/](https://imageboss.me/)
 
+## Table of Contents
+- [ImageBoss Helper for Ruby](#imageboss-helper-for-ruby)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Example `Image Resizing With Cover Operation`](#example-image-resizing-with-cover-operation)
+    - [Example `Image Resizing With Height Operation`](#example-image-resizing-with-height-operation)
+    - [Example `Image Resizing With Extra Options`](#example-image-resizing-with-extra-options)
+    - [All operations and options for Image Resizing](#all-operations-and-options-for-image-resizing)
+    - [Disabling URL generation](#disabling-url-generation)
+  - [Tested on](#tested-on)
+
 ## Installation
 Add this line to your application's Gemfile:
 ```
