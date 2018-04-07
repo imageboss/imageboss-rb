@@ -4,7 +4,7 @@
 Official Gem for generating ImageBoss URLs.
 [https://imageboss.me/](https://imageboss.me/)
 
-## Table of Contents
+**Table of Contents**
 - [ImageBoss Helper for Ruby](#imageboss-helper-for-ruby)
   - [Installation](#installation)
   - [Usage](#usage)
