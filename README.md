@@ -1,4 +1,4 @@
-[![ImageBoss logo](https://service.imageboss.me/width/180/https://imageboss.me/emails/logo-2@2x.png)](https://imageboss.me)
+[![ImageBoss logo](https://img.imageboss.me/width/180/https://imageboss.me/emails/logo-2@2x.png)](https://imageboss.me)
 
 # ImageBoss Helper for Ruby
 [![Build Status](https://travis-ci.org/imageboss/imageboss-rb.svg?branch=master)](https://travis-ci.org/imageboss/imageboss-rb) [![Gem Version](https://badge.fury.io/rb/imageboss-rb.svg)](https://badge.fury.io/rb/imageboss-rb)
@@ -37,7 +37,7 @@ client = ImageBoss::Client.new(domain: 'https://mywebsite.com')
 image_url = client.path('/images/img01.jpg')
                   .operation(:cover, width: 100, height: 100)
 
-#=> https://service.imageboss.me/cover/100x100/https://mywebsite.com/images/img01.jpg
+#=> https://img.imageboss.me/cover/100x100/https://mywebsite.com/images/img01.jpg
 ```
 
 ### Example `Image Resizing With Height Operation`
@@ -47,7 +47,7 @@ client = ImageBoss::Client.new(domain: 'https://mywebsite.com')
 image_url = client.path('/images/img01.jpg')
                   .operation(:height, height: 100)
 
-#=> https://service.imageboss.me/height/100/https://mywebsite.com/images/img01.jpg
+#=> https://img.imageboss.me/height/100/https://mywebsite.com/images/img01.jpg
 ```
 
 ### Example `Image Resizing With Extra Options`
@@ -57,7 +57,7 @@ client = ImageBoss::Client.new(domain: 'https://mywebsite.com')
 image_url = client.path('/images/img01.jpg')
                   .operation(:width, width: 100, options: { grayscale: true })
 
-#=> https://service.imageboss.me/width/100/grayscale:true/https://mywebsite.com/images/img01.jpg
+#=> https://img.imageboss.me/width/100/grayscale:true/https://mywebsite.com/images/img01.jpg
 ```
 ### All operations and options for Image Resizing
 It's all available on our [Official Docs](https://imageboss.me/docs).

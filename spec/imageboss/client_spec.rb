@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ImageBoss::Client do
-  let(:service) { 'https://service.imageboss.me' }
+  let(:service) { 'https://img.imageboss.me' }
   let(:client_args) {{
     domain: 'https://myassets.com'
   }}

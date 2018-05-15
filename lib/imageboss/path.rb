@@ -1,6 +1,6 @@
 module ImageBoss
   class Path
-    SERVICE_URL = 'https://service.imageboss.me'.freeze
+    SERVICE_URL = 'https://img.imageboss.me'.freeze
     OPERATIONS = {
       cover: {
         recipe: '/:operation::mode/:widthx:height/:options/', required: [:width, :height]
@@ -46,7 +46,7 @@ module ImageBoss
         .sub(':operation', @operation_name.to_s)
         .sub(':width', @options[:width].to_s)
         .sub(':height', @options[:height].to_s)
-        .sub(':options', @extra_options.empty? ? "" : "#{@extra_options}/")
+        .sub(':options', @extra_options.empty? ? '' : "#{@extra_options}/")
         .sub('::mode', @options[:mode] ? ":#{@options[:mode]}" : '').to_s
     end
 
