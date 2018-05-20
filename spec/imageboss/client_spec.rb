@@ -34,6 +34,11 @@ describe ImageBoss::Client do
         it { expect(image_url).to eq "#{service}/cover/100x100/grayscale:true,blur:2.0/https://myassets.com/assets/img01.jpg" }
       end
 
+      context 'with options #2' do
+        let(:operation_args) { [:cover, width: 100, height: 100, options: { animation: true } ] }
+        it { expect(image_url).to eq "#{service}/cover/100x100/animation:true/https://myassets.com/assets/img01.jpg" }
+      end
+
       context 'mode' do
         let(:operation_args) { [:cover, mode: :entropy, width: 100, height: 100 ] }
         it { expect(image_url).to eq "#{service}/cover:entropy/100x100/https://myassets.com/assets/img01.jpg" }

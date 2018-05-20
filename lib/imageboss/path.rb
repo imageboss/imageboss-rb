@@ -50,11 +50,10 @@ module ImageBoss
         .sub('::mode', @options[:mode] ? ":#{@options[:mode]}" : '').to_s
     end
 
-    def parse_options(options = {})
-      valid_options = [ :grayscale, :blur ]
+    def parse_options(options)
       opts = []
-      valid_options.each do |vo|
-        opts << [vo.to_s, options[vo] ].join(':') if options && options.has_key?(vo)
+      (options || {}).each_key do |k|
+        opts << [k.to_s, options[k] ].join(':')
       end
       opts.join(',')
     end
