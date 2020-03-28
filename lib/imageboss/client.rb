@@ -1,8 +1,8 @@
 module ImageBoss
   class Client
-    def initialize(domain:, enabled: true)
+    def initialize(source:, enabled: true)
       @options = {
-        domain: domain,
+        source: source,
         enabled: enabled
       }
     end

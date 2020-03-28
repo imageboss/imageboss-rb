@@ -3,18 +3,19 @@ module ImageBoss
     SERVICE_URL = 'https://img.imageboss.me'.freeze
     OPERATIONS = {
       cover: {
-        recipe: '/:operation::mode/:widthx:height/:options/', required: [:width, :height]
+        recipe: '/:source/:operation::mode/:widthx:height/:options/', required: [:width, :height]
       },
       width: {
-        recipe: '/:operation/:width/:options/', required: [:width]
+        recipe: '/:source/:operation/:width/:options/', required: [:width]
       },
-      height: { recipe: '/:operation/:height/:options/', required: [:height]},
-      cdn: { recipe: '/:operation/:options/', required: [] }
+      height: { recipe: '/:source/:operation/:height/:options/', required: [:height]},
+      cdn: { recipe: '/:source/:operation/:options/', required: [] }
     }.freeze
 
     def initialize(client_options, asset_path)
       @client_options = client_options
-      @domain = client_options[:domain].chomp('/')
+      @service_url = client_options[:service_url] || SERVICE_URL
+      @source = client_options[:source]
       @asset_path = asset_path
     end
 
@@ -34,8 +35,7 @@ module ImageBoss
       recipe = [
         SERVICE_URL,
         @operation[:recipe].chomp('/'),
-        @domain,
-        @asset_path
+        @asset_path.gsub(/^\/?(.+)/, "\\1")
       ].join
       parse(recipe)
     end
@@ -43,6 +43,7 @@ module ImageBoss
 
     def parse(recipe)
       recipe
+        .sub(':source', @source.to_s)
         .sub(':operation', @operation_name.to_s)
         .sub(':width', @options[:width].to_s)
         .sub(':height', @options[:height].to_s)

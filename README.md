@@ -3,7 +3,7 @@
 # ImageBoss Helper for Ruby
 [![Build Status](https://travis-ci.org/imageboss/imageboss-rb.svg?branch=master)](https://travis-ci.org/imageboss/imageboss-rb) [![Gem Version](https://badge.fury.io/rb/imageboss-rb.svg)](https://badge.fury.io/rb/imageboss-rb)
 
-Official Gem for generating ImageBoss URLs.
+Official Gem for Generating ImageBoss URLs.
 [https://imageboss.me/](https://imageboss.me/)
 
 **Table of Contents**
@@ -32,32 +32,32 @@ gem install imageboss-rb
 ## Usage
 ### Example `Image Resizing With Cover Operation`
 ```ruby
-client = ImageBoss::Client.new(domain: 'https://mywebsite.com')
+client = ImageBoss::Client.new(source: 'mywebsite')
 
 image_url = client.path('/images/img01.jpg')
                   .operation(:cover, width: 100, height: 100)
 
-#=> https://img.imageboss.me/cover/100x100/https://mywebsite.com/images/img01.jpg
+#=> https://img.imageboss.me/mywebsite/cover/100x100/images/img01.jpg
 ```
 
 ### Example `Image Resizing With Height Operation`
 ```ruby
-client = ImageBoss::Client.new(domain: 'https://mywebsite.com')
+client = ImageBoss::Client.new(source: 'mywebsite')
 
 image_url = client.path('/images/img01.jpg')
                   .operation(:height, height: 100)
 
-#=> https://img.imageboss.me/height/100/https://mywebsite.com/images/img01.jpg
+#=> https://img.imageboss.me/mywebsite/height/100/images/img01.jpg
 ```
 
 ### Example `Image Resizing With Extra Options`
 ```ruby
-client = ImageBoss::Client.new(domain: 'https://mywebsite.com')
+client = ImageBoss::Client.new(source: 'mywebsite')
 
 image_url = client.path('/images/img01.jpg')
                   .operation(:width, width: 100, options: { grayscale: true })
 
-#=> https://img.imageboss.me/width/100/grayscale:true/https://mywebsite.com/images/img01.jpg
+#=> https://img.imageboss.me/width/100/grayscale:true/images/img01.jpg
 ```
 ### All operations and options for Image Resizing
 It's all available on our [Official Docs](https://imageboss.me/docs).
@@ -67,7 +67,7 @@ If you are coding on `test`, `development` environments and don't want to send a
 you can always disable the URL generation and the client will just fallback to the original path provided.
 
 ```ruby
-client = ImageBoss::Client.new(domain: 'https://mywebsite.com', disabled: true)
+client = ImageBoss::Client.new(source: 'mywebsite', disabled: true)
 
 image_url = client.path('/images/img01.jpg')
                   .operation(:width, width: 100, options: { grayscale: true })
@@ -78,6 +78,7 @@ This will give you the ability to see your image without adding extra code to ha
 
 ## Tested on
 Ruby
+  - 2.6.3
   - 2.5.1
   - 2.4.4
   - 2.3.7
