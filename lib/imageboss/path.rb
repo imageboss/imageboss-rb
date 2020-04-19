@@ -1,5 +1,8 @@
 module ImageBoss
   class Path
+    require 'uri'
+    require 'openssl'
+
     SERVICE_URL = 'https://img.imageboss.me'.freeze
     OPERATIONS = {
       cover: {
@@ -16,6 +19,7 @@ module ImageBoss
       @client_options = client_options
       @service_url = client_options[:service_url] || SERVICE_URL
       @source = client_options[:source]
+      @secret = client_options[:secret]
       @asset_path = asset_path
     end
 
@@ -37,9 +41,22 @@ module ImageBoss
         @operation[:recipe].chomp('/'),
         @asset_path.gsub(/^\/?(.+)/, "\\1")
       ].join
-      parse(recipe)
+
+      @secret == false ? parse(recipe) : add_params(parse(recipe), { bossToken: create_token(@asset_path) })
     end
+
     private
+
+    def create_token(path)
+      OpenSSL::HMAC.hexdigest('sha256', @secret, path)
+    end
+
+    def add_params(url, params = {})
+      uri = URI(url)
+      params    = Hash[URI.decode_www_form(uri.query || '')].merge(params)
+      uri.query =      URI.encode_www_form(params)
+      uri.to_s
+    end
 
     def parse(recipe)
       recipe

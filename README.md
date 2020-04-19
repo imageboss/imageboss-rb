@@ -15,6 +15,7 @@ Official Gem for Generating ImageBoss URLs.
     - [Example `Image Resizing With Extra Options`](#example-image-resizing-with-extra-options)
     - [All operations and options for Image Resizing](#all-operations-and-options-for-image-resizing)
     - [Disabling URL generation](#disabling-url-generation)
+    - [Signing your URLs](#signing-your-urls)
   - [Tested on](#tested-on)
 
 ## Installation
@@ -73,6 +74,20 @@ image_url = client.path('/images/img01.jpg')
                   .operation(:width, width: 100, options: { grayscale: true })
 
 #=> /images/img01.jpg
+```
+This will give you the ability to see your image without adding extra code to handle this situation.
+
+### Signing your URLs
+Read more about this feature here:
+https://www.imageboss.me/docs/security
+
+```ruby
+client = ImageBoss::Client.new(source: 'mywebsite', secret: '<MY_SECRET>')
+
+image_url = client.path('/images/img01.jpg')
+                  .operation(:width, width: 100)
+
+#=> https://img.imageboss.me/width/100/images/img01.jpg?bossToken=ff74a46c7228ee4262c39b8d501c488293c5be9d433bb9ca957f32c9c3d844ab
 ```
 This will give you the ability to see your image without adding extra code to handle this situation.
 

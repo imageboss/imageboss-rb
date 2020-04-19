@@ -14,7 +14,8 @@ describe ImageBoss::Client do
   context 'initialize' do
     it { expect(subject.instance_variable_get(:@options)).to eq({
         source: client_args[:source],
-        enabled: true
+        enabled: true,
+        secret: false
       })
     }
   end
@@ -67,7 +68,7 @@ describe ImageBoss::Client do
       it { expect(image_url).to eq "#{service}/#{source}/cdn/assets/img01.jpg" }
     end
 
-    fcontext 'disabled  client' do
+    context 'disabled  client' do
       let(:client_args) {{
         source: source,
         enabled: false
@@ -75,6 +76,31 @@ describe ImageBoss::Client do
 
       let(:operation_args) { [:height, height: 200 ] }
       it { expect(image_url).to eq '/assets/img01.jpg' }
+    end
+  end
+
+  context 'secure token' do
+    let(:client_args) {{
+      source: source,
+      secret: 'abc'
+    }}
+
+    let(:operation_args) { [:cover, width: 100, height: 100] }
+
+    let(:path) {
+      subject
+        .path('/assets/img01.jpg?existing=oh')
+    }
+
+    let(:image_url) { path.operation(*operation_args) }
+
+    subject { described_class.new(**client_args) }
+
+    context 'initialize' do
+      context 'width' do
+        let(:operation_args) { [:width, width: 100 ] }
+        it { expect(image_url).to eq "#{service}/#{source}/width/100/assets/img01.jpg?existing=oh&bossToken=ff74a46c7228ee4262c39b8d501c488293c5be9d433bb9ca957f32c9c3d844ab" }
+      end
     end
   end
 end

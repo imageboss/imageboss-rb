@@ -1,9 +1,10 @@
 module ImageBoss
   class Client
-    def initialize(source:, enabled: true)
+    def initialize(source:, enabled: true, secret: false)
       @options = {
         source: source,
-        enabled: enabled
+        enabled: enabled,
+        secret: secret
       }
     end
 
