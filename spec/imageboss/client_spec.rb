@@ -41,6 +41,11 @@ describe ImageBoss::Client do
         it { expect(image_url).to eq "#{service}/#{source}/cover/100x100/animation:true/assets/img01.jpg" }
       end
 
+      context 'with options #3' do
+        let(:operation_args) { [:cover, width: 100, height: 100, options: { "wmk-path": "/my/nice/image.jpg" } ] }
+        it { expect(image_url).to eq "#{service}/#{source}/cover/100x100/wmk-path:%2Fmy%2Fnice%2Fimage.jpg/assets/img01.jpg" }
+      end
+
       context 'mode' do
         let(:operation_args) { [:cover, mode: :entropy, width: 100, height: 100 ] }
         it { expect(image_url).to eq "#{service}/#{source}/cover:entropy/100x100/assets/img01.jpg" }

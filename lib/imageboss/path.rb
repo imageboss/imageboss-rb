@@ -73,6 +73,7 @@ module ImageBoss
     def parse_options(options)
       opts = []
       (options || {}).each_key do |k|
+        options[k] = k.to_s == "wmk-path" ? CGI.escape(options[k]) : options[k]
         opts << [k.to_s, options[k] ].join(':')
       end
       opts.join(',')
