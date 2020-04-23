@@ -42,7 +42,9 @@ module ImageBoss
         @asset_path.gsub(/^\/?(.+)/, "\\1")
       ].join
 
-      @secret == false ? parse(recipe) : add_params(parse(recipe), { bossToken: create_token(@asset_path) })
+      recipe_url = parse(recipe)
+      recipe_path = parse(recipe).gsub(SERVICE_URL, '')
+      @secret == false ? recipe_url : add_params(recipe_url, { bossToken: create_token(recipe_path) })
     end
 
     private

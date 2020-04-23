@@ -99,7 +99,7 @@ describe ImageBoss::Client do
     context 'initialize' do
       context 'width' do
         let(:operation_args) { [:width, width: 100 ] }
-        it { expect(image_url).to eq "#{service}/#{source}/width/100/assets/img01.jpg?existing=oh&bossToken=ff74a46c7228ee4262c39b8d501c488293c5be9d433bb9ca957f32c9c3d844ab" }
+        it { expect(image_url).to eq "#{service}/#{source}/width/100/assets/img01.jpg?existing=oh&bossToken=92812e6cffe821d7c30a21b5fbddc8ce095f7607d213e12f30369597a18c5ef0" }
       end
     end
   end
