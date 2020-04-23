@@ -1,7 +1,8 @@
 module ImageBoss
   class Path
-    require 'uri'
     require 'openssl'
+    require 'uri'
+    require 'cgi'
 
     SERVICE_URL = 'https://img.imageboss.me'.freeze
     OPERATIONS = {
