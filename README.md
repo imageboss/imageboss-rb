@@ -21,7 +21,7 @@ Official Gem for Generating ImageBoss URLs.
 ## Ruby compatibility
 
 - **Required:** Ruby `>= 1.9.0` (see [gemspec](imageboss-rb.gemspec)).
-- **Tested in CI:** Latest of each major line — 1.x, 2.x, and 3.x (see [CI workflow](https://github.com/imageboss/imageboss-rb/actions)).
+- **Tested in CI:** Latest 2.x and 3.x (Ruby 2.7 and 3.4). Ruby 1.9 is no longer available on current CI runners (see [CI workflow](https://github.com/imageboss/imageboss-rb/actions)).
 
 ## Installation
 Add this line to your application's Gemfile:
