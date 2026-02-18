@@ -8,6 +8,7 @@ Official Gem for Generating ImageBoss URLs.
 
 **Table of Contents**
 - [ImageBoss Helper for Ruby](#imageboss-helper-for-ruby)
+  - [Ruby compatibility](#ruby-compatibility)
   - [Installation](#installation)
   - [Usage](#usage)
     - [Example `Image Resizing With Cover Operation`](#example-image-resizing-with-cover-operation)
@@ -16,7 +17,11 @@ Official Gem for Generating ImageBoss URLs.
     - [All operations and options for Image Resizing](#all-operations-and-options-for-image-resizing)
     - [Disabling URL generation](#disabling-url-generation)
     - [Signing your URLs](#signing-your-urls)
-  - [Tested on](#tested-on)
+
+## Ruby compatibility
+
+- **Required:** Ruby `>= 1.9.0` (see [gemspec](imageboss-rb.gemspec)).
+- **Tested in CI:** Latest of each major line — 1.x, 2.x, and 3.x (see [CI workflow](https://github.com/imageboss/imageboss-rb/actions)).
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -96,6 +101,3 @@ image_url = client.path('/images/img01.jpg')
 #=> https://img.imageboss.me/width/100/images/img01.jpg?bossToken=ff74a46c7228ee4262c39b8d501c488293c5be9d433bb9ca957f32c9c3d844ab
 ```
 This will give you the ability to see your image without adding extra code to handle this situation.
-
-## Tested on
-See [CI workflow](https://github.com/imageboss/imageboss-rb/actions) for the current matrix. Ruby 2.5 through 3.4 and JRuby.
